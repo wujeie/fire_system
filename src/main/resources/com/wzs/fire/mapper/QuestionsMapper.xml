@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzs.fire.mapper.QuestionsMapper">
+  <resultMap id="BaseResultMap" type="com.wzs.fire.pojo.entity.Questions">
+    <!--@mbg.generated-->
+    <!--@Table fkp_system.questions-->
+    <id column="question_id" jdbcType="INTEGER" property="questionId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="option_A" jdbcType="VARCHAR" property="optionA" />
+    <result column="option_B" jdbcType="VARCHAR" property="optionB" />
+    <result column="option_C" jdbcType="VARCHAR" property="optionC" />
+    <result column="option_D" jdbcType="VARCHAR" property="optionD" />
+    <result column="correct_answer" jdbcType="VARCHAR" property="correctAnswer" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    question_id, content, option_A, option_B, option_C, option_D, correct_answer
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from fkp_system.questions
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from fkp_system.questions
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="question_id" keyProperty="questionId" parameterType="com.wzs.fire.pojo.entity.Questions" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.questions (content, option_A, option_B, 
+      option_C, option_D, correct_answer
+      )
+    values (#{content,jdbcType=VARCHAR}, #{optionA,jdbcType=VARCHAR}, #{optionB,jdbcType=VARCHAR}, 
+      #{optionC,jdbcType=VARCHAR}, #{optionD,jdbcType=VARCHAR}, #{correctAnswer,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="question_id" keyProperty="questionId" parameterType="com.wzs.fire.pojo.entity.Questions" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.questions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        content,
+      </if>
+      <if test="optionA != null">
+        option_A,
+      </if>
+      <if test="optionB != null">
+        option_B,
+      </if>
+      <if test="optionC != null">
+        option_C,
+      </if>
+      <if test="optionD != null">
+        option_D,
+      </if>
+      <if test="correctAnswer != null">
+        correct_answer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="optionA != null">
+        #{optionA,jdbcType=VARCHAR},
+      </if>
+      <if test="optionB != null">
+        #{optionB,jdbcType=VARCHAR},
+      </if>
+      <if test="optionC != null">
+        #{optionC,jdbcType=VARCHAR},
+      </if>
+      <if test="optionD != null">
+        #{optionD,jdbcType=VARCHAR},
+      </if>
+      <if test="correctAnswer != null">
+        #{correctAnswer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wzs.fire.pojo.entity.Questions">
+    <!--@mbg.generated-->
+    update fkp_system.questions
+    <set>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="optionA != null">
+        option_A = #{optionA,jdbcType=VARCHAR},
+      </if>
+      <if test="optionB != null">
+        option_B = #{optionB,jdbcType=VARCHAR},
+      </if>
+      <if test="optionC != null">
+        option_C = #{optionC,jdbcType=VARCHAR},
+      </if>
+      <if test="optionD != null">
+        option_D = #{optionD,jdbcType=VARCHAR},
+      </if>
+      <if test="correctAnswer != null">
+        correct_answer = #{correctAnswer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wzs.fire.pojo.entity.Questions">
+    <!--@mbg.generated-->
+    update fkp_system.questions
+    set content = #{content,jdbcType=VARCHAR},
+      option_A = #{optionA,jdbcType=VARCHAR},
+      option_B = #{optionB,jdbcType=VARCHAR},
+      option_C = #{optionC,jdbcType=VARCHAR},
+      option_D = #{optionD,jdbcType=VARCHAR},
+      correct_answer = #{correctAnswer,jdbcType=VARCHAR}
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </update>
+</mapper>

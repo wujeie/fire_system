@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzs.fire.mapper.TestpapersMapper">
+  <resultMap id="BaseResultMap" type="com.wzs.fire.pojo.entity.Testpapers">
+    <!--@mbg.generated-->
+    <!--@Table fkp_system.testpapers-->
+    <id column="testpaper_Id" jdbcType="INTEGER" property="testpaperId" />
+    <result column="testpaper_name" jdbcType="VARCHAR" property="testpaperName" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="totalscore" jdbcType="VARCHAR" property="totalscore" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    testpaper_Id, testpaper_name, createtime, totalscore
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from fkp_system.testpapers
+    where testpaper_Id = #{testpaperId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from fkp_system.testpapers
+    where testpaper_Id = #{testpaperId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="testpaper_Id" keyProperty="testpaperId" parameterType="com.wzs.fire.pojo.entity.Testpapers" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.testpapers (testpaper_name, createtime, totalscore
+      )
+    values (#{testpaperName,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{totalscore,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="testpaper_Id" keyProperty="testpaperId" parameterType="com.wzs.fire.pojo.entity.Testpapers" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.testpapers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testpaperName != null">
+        testpaper_name,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="totalscore != null">
+        totalscore,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testpaperName != null">
+        #{testpaperName,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalscore != null">
+        #{totalscore,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wzs.fire.pojo.entity.Testpapers">
+    <!--@mbg.generated-->
+    update fkp_system.testpapers
+    <set>
+      <if test="testpaperName != null">
+        testpaper_name = #{testpaperName,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalscore != null">
+        totalscore = #{totalscore,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where testpaper_Id = #{testpaperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wzs.fire.pojo.entity.Testpapers">
+    <!--@mbg.generated-->
+    update fkp_system.testpapers
+    set testpaper_name = #{testpaperName,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      totalscore = #{totalscore,jdbcType=VARCHAR}
+    where testpaper_Id = #{testpaperId,jdbcType=INTEGER}
+  </update>
+</mapper>

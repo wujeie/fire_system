@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzs.fire.mapper.FirevideosMapper">
+  <resultMap id="BaseResultMap" type="com.wzs.fire.pojo.entity.Firevideos">
+    <!--@mbg.generated-->
+    <!--@Table fkp_system.firevideos-->
+    <id column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="video_cover" jdbcType="VARCHAR" property="videoCover" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    video_id, title, video_cover, description, file_path, created_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from fkp_system.firevideos
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from fkp_system.firevideos
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="video_id" keyProperty="videoId" parameterType="com.wzs.fire.pojo.entity.Firevideos" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.firevideos (title, video_cover, description, 
+      file_path, created_at)
+    values (#{title,jdbcType=VARCHAR}, #{videoCover,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, 
+      #{filePath,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="video_id" keyProperty="videoId" parameterType="com.wzs.fire.pojo.entity.Firevideos" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.firevideos
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="videoCover != null">
+        video_cover,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="filePath != null">
+        file_path,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCover != null">
+        #{videoCover,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="filePath != null">
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wzs.fire.pojo.entity.Firevideos">
+    <!--@mbg.generated-->
+    update fkp_system.firevideos
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCover != null">
+        video_cover = #{videoCover,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="filePath != null">
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wzs.fire.pojo.entity.Firevideos">
+    <!--@mbg.generated-->
+    update fkp_system.firevideos
+    set title = #{title,jdbcType=VARCHAR},
+      video_cover = #{videoCover,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP}
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+</mapper>

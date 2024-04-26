@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzs.fire.mapper.TestpaperquestionsMapper">
+  <resultMap id="BaseResultMap" type="com.wzs.fire.pojo.entity.Testpaperquestions">
+    <!--@mbg.generated-->
+    <!--@Table fkp_system.testpaperquestions-->
+    <id column="testpaperquestions_id" jdbcType="INTEGER" property="testpaperquestionsId" />
+    <result column="testpaper_id" jdbcType="INTEGER" property="testpaperId" />
+    <result column="question_id" jdbcType="INTEGER" property="questionId" />
+    <result column="question_order" jdbcType="INTEGER" property="questionOrder" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    testpaperquestions_id, testpaper_id, question_id, question_order
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from fkp_system.testpaperquestions
+    where testpaperquestions_id = #{testpaperquestionsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from fkp_system.testpaperquestions
+    where testpaperquestions_id = #{testpaperquestionsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="testpaperquestions_id" keyProperty="testpaperquestionsId" parameterType="com.wzs.fire.pojo.entity.Testpaperquestions" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.testpaperquestions (testpaper_id, question_id, question_order
+      )
+    values (#{testpaperId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER}, #{questionOrder,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="testpaperquestions_id" keyProperty="testpaperquestionsId" parameterType="com.wzs.fire.pojo.entity.Testpaperquestions" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.testpaperquestions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testpaperId != null">
+        testpaper_id,
+      </if>
+      <if test="questionId != null">
+        question_id,
+      </if>
+      <if test="questionOrder != null">
+        question_order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testpaperId != null">
+        #{testpaperId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null">
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionOrder != null">
+        #{questionOrder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wzs.fire.pojo.entity.Testpaperquestions">
+    <!--@mbg.generated-->
+    update fkp_system.testpaperquestions
+    <set>
+      <if test="testpaperId != null">
+        testpaper_id = #{testpaperId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null">
+        question_id = #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionOrder != null">
+        question_order = #{questionOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where testpaperquestions_id = #{testpaperquestionsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wzs.fire.pojo.entity.Testpaperquestions">
+    <!--@mbg.generated-->
+    update fkp_system.testpaperquestions
+    set testpaper_id = #{testpaperId,jdbcType=INTEGER},
+      question_id = #{questionId,jdbcType=INTEGER},
+      question_order = #{questionOrder,jdbcType=INTEGER}
+    where testpaperquestions_id = #{testpaperquestionsId,jdbcType=INTEGER}
+  </update>
+</mapper>

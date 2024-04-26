@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzs.fire.mapper.FeedbackMapper">
+  <resultMap id="BaseResultMap" type="com.wzs.fire.pojo.entity.Feedback">
+    <!--@mbg.generated-->
+    <!--@Table fkp_system.feedback-->
+    <id column="feedback_id" jdbcType="INTEGER" property="feedbackId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="admin_reply" jdbcType="LONGVARCHAR" property="adminReply" />
+    <result column="replied_at" jdbcType="TIMESTAMP" property="repliedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    feedback_id, user_id, content, created_at, admin_reply, replied_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from fkp_system.feedback
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from fkp_system.feedback
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="feedback_id" keyProperty="feedbackId" parameterType="com.wzs.fire.pojo.entity.Feedback" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.feedback (user_id, content, created_at, 
+      admin_reply, replied_at)
+    values (#{userId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{adminReply,jdbcType=LONGVARCHAR}, #{repliedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="feedback_id" keyProperty="feedbackId" parameterType="com.wzs.fire.pojo.entity.Feedback" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into fkp_system.feedback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="adminReply != null">
+        admin_reply,
+      </if>
+      <if test="repliedAt != null">
+        replied_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminReply != null">
+        #{adminReply,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="repliedAt != null">
+        #{repliedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wzs.fire.pojo.entity.Feedback">
+    <!--@mbg.generated-->
+    update fkp_system.feedback
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminReply != null">
+        admin_reply = #{adminReply,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="repliedAt != null">
+        replied_at = #{repliedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wzs.fire.pojo.entity.Feedback">
+    <!--@mbg.generated-->
+    update fkp_system.feedback
+    set user_id = #{userId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      admin_reply = #{adminReply,jdbcType=LONGVARCHAR},
+      replied_at = #{repliedAt,jdbcType=TIMESTAMP}
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+</mapper>
